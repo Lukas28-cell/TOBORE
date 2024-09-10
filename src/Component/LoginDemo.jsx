@@ -39,7 +39,8 @@ function LoginDemo() {
             {user  && (
                 <>
                     <div className="user ">
-                        <h1>Your Successfully Loged In</h1>
+                        <h1 >Your Successfully Loged In</h1>
+                        <h1 >Your Successfully Loged In</h1>
                         <h2>Name: {user.displayName}</h2>
                         <h2>Email: {user.email}</h2>
                         <img src={user.photoURL} alt="N/A" />
