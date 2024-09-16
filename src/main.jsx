@@ -25,7 +25,11 @@ import CartPage from './shop/CartPage.jsx';
 import SingleBlog from './Blog/SingleBlog.jsx';
 import About from './about/About.jsx';
 import Contact from './contact/Contact.jsx';
-import LoginDemo from './Component/LoginDemo.jsx';
+// import LoginDemo from './Component/LoginDemo.jsx';
+import PrivateRoute from './privateRoute/PrivateRoute.jsx';
+import AuthProvider from './contexts/AuthProvider.jsx';
+import Login from './Component/Login.jsx';
+import SingUp from './Component/SingUp.jsx';
 
 const router = createBrowserRouter([
   {
@@ -42,7 +46,7 @@ const router = createBrowserRouter([
         path: "shop/:id", element:<SingleProduct/>
       },
       {
-        path: "cart-page", element:<CartPage/>
+        path: "cart-page", element:<PrivateRoute><CartPage/></PrivateRoute>
       },
       {
         path: "/about", element:<About/>
@@ -50,20 +54,28 @@ const router = createBrowserRouter([
       {
         path: "/contact", element:<Contact/>
       },
-      {
-        path: "/login", element:<LoginDemo/>
-      },  
+      // {
+      //   path: "/login", element:<LoginDemo/>
+      // },  
   
       
 
 
     ],
   },
+  {
+    path:"login", element:<Login/>
+  },
+  {
+    path:"sign-up", element:<SingUp/>
+  }
 
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <RouterProvider router={router}/>
+  <AuthProvider>
+      <RouterProvider router={router}/>
+  </AuthProvider>
   // <React.StrictMode>
   //   <App />
   // </React.StrictMode>,
